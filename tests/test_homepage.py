@@ -12,17 +12,42 @@ class HomepageContractTests(unittest.TestCase):
         for label in ("PORTFOLIO", "ABOUT", "PRESS", "CONTACT"):
             self.assertIn(label, INDEX_HTML)
 
-    def test_homepage_has_fullscreen_landing_hero(self):
-        self.assertIn('class="landing-hero"', INDEX_HTML)
-        self.assertIn("MONICA", INDEX_HTML)
-        self.assertIn("hero-stage__image", INDEX_HTML)
+    def test_featured_work_section_uses_all_compress_assets(self):
+        for asset in (
+            "./Compress/_P9A0019.jpg",
+            "./Compress/_P9A0116.jpg",
+            "./Compress/_P9A0301.jpg",
+            "./Compress/_P9A0671копія.jpg",
+            "./Compress/_P9A0687копія.jpg",
+            "./Compress/_P9A0746копія.jpg",
+            "./Compress/_P9A0852копія.jpg",
+            "./Compress/_P9A0908копія.jpg",
+        ):
+            self.assertIn(asset, INDEX_HTML)
 
-    def test_homepage_has_editorial_support_sections(self):
-        for fragment in ("Selected Stories", "About Monica", "Press Notes"):
+    def test_featured_work_section_frames_style_range(self):
+        for fragment in (
+            "Portfolio Study",
+            "Editor's Letter",
+            "Cover Presence",
+            "Wardrobe Notes",
+            "Look Ledger",
+            "Soft Rebellion",
+        ):
             self.assertIn(fragment, INDEX_HTML)
 
-    def test_styles_define_new_homepage_layout(self):
-        for selector in (".landing-hero", ".hero-stage", ".story-strip", ".press-list"):
+    def test_homepage_retains_supporting_editorial_sections(self):
+        for fragment in ("Dior 2026", "Breakfast Stories", "About Monica", "Book A Session"):
+            self.assertIn(fragment, INDEX_HTML)
+
+    def test_styles_define_featured_portfolio_layout(self):
+        for selector in (
+            ".featured-spread",
+            ".featured-spread__editorial",
+            ".featured-spread__hero",
+            ".featured-spread__aside",
+            ".featured-spread__strip",
+        ):
             self.assertIn(selector, STYLES_CSS)
 
 
