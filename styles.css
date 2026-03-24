@@ -876,20 +876,87 @@ img {
 }
 
 .portfolio-grid {
+  position: relative;
   width: min(100% - 2.5rem, 1180px);
   margin: 0 auto;
-  padding-top: 3.1rem;
-  padding-bottom: 3rem;
+  padding: 3.25rem clamp(1rem, 2.6vw, 2.4rem) 3.3rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 14%, rgba(182, 224, 225, 0.24), transparent 18%),
+    radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.62), transparent 16%),
+    linear-gradient(180deg, rgba(245, 242, 237, 0.98), rgba(236, 232, 226, 0.98));
+  border: 1px solid rgba(27, 27, 24, 0.1);
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.62);
+}
+
+.portfolio-grid::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(181, 224, 225, 0.08), transparent 28%, transparent 72%, rgba(181, 224, 225, 0.08)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(15, 15, 15, 0.02) 0,
+      rgba(15, 15, 15, 0.02) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+  content: "";
+  pointer-events: none;
+}
+
+.portfolio-grid::after {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(27, 27, 24, 0.08);
+  content: "";
+  pointer-events: none;
+}
+
+.portfolio-grid .section-intro,
+.portfolio-grid .top-grid,
+.portfolio-grid .feature-band,
+.portfolio-grid .bottom-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-grid .section-intro {
+  margin-bottom: 1.8rem;
+}
+
+.portfolio-grid .section-kicker {
+  color: #8fb9bd;
+  font-size: clamp(2.2rem, 4vw, 3.7rem);
+  text-shadow: none;
+}
+
+.portfolio-grid .section-title {
+  color: #12120f;
+  letter-spacing: 0.08em;
+  text-shadow: none;
+}
+
+.portfolio-grid .section-copy {
+  width: min(100%, 42rem);
+  color: rgba(28, 29, 24, 0.72);
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.65;
 }
 
 .top-grid,
 .bottom-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.35rem;
 }
 
 .top-grid {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
 }
 
 .bottom-grid {
@@ -900,17 +967,21 @@ img {
 .story-card {
   position: relative;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 22%),
-    var(--panel);
-  border: 1px solid var(--line-soft);
-  box-shadow: var(--shadow);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(241, 237, 230, 0.92)),
+    rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(20, 20, 17, 0.12);
+  box-shadow:
+    0 22px 42px rgba(36, 31, 24, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55);
   overflow: hidden;
 }
 
 .story-card::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.12) 56%, rgba(0, 0, 0, 0.75) 100%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.08) 44%, rgba(18, 18, 16, 0.32) 100%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.24), transparent 30%);
   content: "";
   pointer-events: none;
 }
@@ -921,12 +992,21 @@ img {
   overflow: hidden;
 }
 
+.story-card__media::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.42) 0%, transparent 32%);
+  content: "";
+  z-index: 1;
+  pointer-events: none;
+}
+
 .story-card__media img {
   height: 100%;
   object-fit: cover;
-  transform: scale(1.01);
-  transition: transform 800ms ease, filter 500ms ease;
-  filter: saturate(0.95) contrast(1.02);
+  transform: scale(1.03);
+  transition: transform 850ms ease, filter 500ms ease;
+  filter: saturate(0.92) contrast(1.01) brightness(1.02);
 }
 
 .story-card__image--stairs {
@@ -955,8 +1035,8 @@ img {
 }
 
 .story-card:hover .story-card__media img {
-  transform: scale(1.045);
-  filter: saturate(1.02) contrast(1.04);
+  transform: scale(1.07);
+  filter: saturate(0.98) contrast(1.04) brightness(1.03);
 }
 
 .story-card__body {
@@ -965,8 +1045,9 @@ img {
   right: 0;
   bottom: 0;
   z-index: 1;
-  padding: 1.05rem 1.2rem 1.18rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(7, 7, 7, 0.25) 16%, rgba(7, 7, 7, 0.82) 100%);
+  padding: 1.2rem 1.25rem 1.25rem;
+  background: linear-gradient(180deg, rgba(246, 243, 237, 0) 0%, rgba(246, 243, 237, 0.18) 18%, rgba(243, 239, 233, 0.92) 68%, rgba(238, 233, 226, 0.97) 100%);
+  backdrop-filter: blur(6px);
 }
 
 .story-card__body--centered {
@@ -975,8 +1056,8 @@ img {
 
 .story-card__eyebrow {
   margin: 0 0 0.5rem;
-  color: var(--champagne);
-  font-size: 0.64rem;
+  color: #82b7bc;
+  font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -988,14 +1069,15 @@ img {
   font-weight: 500;
   line-height: 0.9;
   letter-spacing: 0.04em;
+  color: #151512;
   text-transform: uppercase;
 }
 
 .story-card__meta {
   margin: 0.12rem 0;
-  color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.45;
+  color: rgba(30, 30, 26, 0.72);
+  font-size: 0.83rem;
+  line-height: 1.48;
 }
 
 .story-card--portrait .story-card__media {
@@ -1006,14 +1088,22 @@ img {
   aspect-ratio: 1.18;
 }
 
+.story-card--portrait {
+  transform: translateY(-0.55rem);
+}
+
+.story-card--landscape {
+  transform: translateY(0.55rem);
+}
+
 .story-card--feature {
   z-index: 1;
-  width: min(71vw, 690px);
+  width: min(72vw, 700px);
   margin: 0 auto;
 }
 
 .story-card--feature .story-card__media {
-  aspect-ratio: 1.06;
+  aspect-ratio: 0.96;
 }
 
 .story-card--feature .story-card__title {
@@ -1446,19 +1536,20 @@ img {
 
 .feature-band {
   position: relative;
-  margin: 2.5rem 0 1.85rem;
-  padding: 2.5rem 0 2rem;
+  margin: 2.8rem 0 2.1rem;
+  padding: 2.4rem 0 2rem;
 }
 
 .peek {
   position: absolute;
   top: 5.8rem;
   width: clamp(165px, 20vw, 260px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
-  opacity: 0.24;
+  border: 1px solid rgba(133, 184, 189, 0.14);
+  box-shadow: 0 18px 44px rgba(28, 28, 24, 0.12);
+  opacity: 0.42;
   overflow: hidden;
-  filter: saturate(0.76) blur(0.2px);
+  filter: saturate(0.78) blur(0.2px);
+  mix-blend-mode: multiply;
 }
 
 .peek img {
@@ -1930,6 +2021,20 @@ img {
   .campaign-showcase__button {
     width: 100%;
     min-width: 0;
+  }
+
+  .portfolio-grid {
+    width: min(100% - 1.2rem, 1180px);
+    padding: 2.2rem 0.9rem 2.5rem;
+  }
+
+  .portfolio-grid .section-intro {
+    margin-bottom: 1.35rem;
+  }
+
+  .story-card--portrait,
+  .story-card--landscape {
+    transform: none;
   }
 
   .finale-chapter {
