@@ -1726,6 +1726,292 @@ img {
   transform: rotate(45deg);
 }
 
+.motion-ready .finale-chapter {
+  --finale-shift: 0px;
+  --finale-tilt: 0deg;
+}
+
+.motion-ready .finale-chapter__hero-image,
+.motion-ready .finale-card,
+.motion-ready .finale-chapter__boxes,
+.motion-ready .finale-chapter__statement,
+.motion-ready .finale-chapter__outro {
+  --reveal-x: 0px;
+  --reveal-y: 2.7rem;
+  --reveal-scale: 0.975;
+  --parallax-y: 0px;
+  --parallax-tilt: 0deg;
+  opacity: 0;
+  filter: blur(14px);
+  transform:
+    translate3d(var(--reveal-x), calc(var(--reveal-y) + var(--parallax-y)), 0)
+    rotate(var(--parallax-tilt))
+    scale(var(--reveal-scale));
+  transition:
+    opacity 950ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 500ms ease,
+    border-color 500ms ease;
+  will-change: transform, opacity, filter;
+}
+
+.motion-ready .finale-chapter__hero-image--left {
+  --reveal-x: -1.4rem;
+  transition-delay: 40ms;
+}
+
+.motion-ready .finale-chapter__hero-image--right {
+  --reveal-x: 1.4rem;
+  transition-delay: 210ms;
+}
+
+.motion-ready .finale-card--pearls {
+  transition-delay: 120ms;
+}
+
+.motion-ready .finale-card--boxing {
+  transition-delay: 210ms;
+}
+
+.motion-ready .finale-card--swing {
+  transition-delay: 300ms;
+}
+
+.motion-ready .finale-chapter__boxes {
+  transition-delay: 230ms;
+}
+
+.motion-ready .finale-chapter__statement {
+  --reveal-x: 1rem;
+  transition-delay: 310ms;
+}
+
+.motion-ready .finale-chapter__outro {
+  --reveal-y: 1.6rem;
+  transition-delay: 380ms;
+}
+
+.motion-ready .finale-chapter__hero-copy > * {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate3d(0, 1.55rem, 0);
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion-ready .finale-chapter__ghost {
+  opacity: 0;
+  filter: saturate(0) blur(7px);
+  transform: translate3d(0, 1.8rem, 0) scale(1.08);
+  transition:
+    opacity 1300ms cubic-bezier(0.16, 1, 0.3, 1) 120ms,
+    filter 1300ms cubic-bezier(0.16, 1, 0.3, 1) 120ms,
+    transform 1500ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+}
+
+.motion-ready .finale-chapter__eyebrow {
+  transition-delay: 120ms;
+}
+
+.motion-ready .finale-chapter__title {
+  transition-delay: 200ms;
+}
+
+.motion-ready .finale-chapter__caps {
+  transition-delay: 280ms;
+}
+
+.motion-ready .finale-chapter__dek {
+  transition-delay: 360ms;
+}
+
+.motion-ready .finale-chapter__mini-rule {
+  transition-delay: 430ms;
+}
+
+.motion-ready .finale-chapter__quote {
+  transition-delay: 520ms;
+}
+
+.motion-ready .finale-chapter__prompt {
+  transition-delay: 610ms;
+}
+
+.finale-chapter--active .finale-chapter__hero-image,
+.finale-chapter--active .finale-card,
+.finale-chapter--active .finale-chapter__boxes,
+.finale-chapter--active .finale-chapter__statement,
+.finale-chapter--active .finale-chapter__outro {
+  --reveal-x: 0px;
+  --reveal-y: 0px;
+  --reveal-scale: 1;
+  opacity: 1;
+  filter: blur(0);
+}
+
+.finale-chapter--active .finale-chapter__hero-copy > *,
+.finale-chapter--active .finale-chapter__ghost {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.finale-chapter__title-script {
+  position: relative;
+  isolation: isolate;
+}
+
+.motion-ready .finale-chapter__title-script::after {
+  position: absolute;
+  inset: -0.2em -0.5em;
+  background:
+    linear-gradient(
+      110deg,
+      transparent 12%,
+      rgba(255, 252, 244, 0.06) 34%,
+      rgba(255, 244, 223, 0.72) 49%,
+      rgba(255, 252, 244, 0.1) 62%,
+      transparent 82%
+    );
+  content: "";
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translateX(-140%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.motion-ready .finale-chapter--active .finale-chapter__title-script::after {
+  animation: couture-shimmer 8.5s ease-in-out 1.15s infinite;
+}
+
+.motion-ready .finale-chapter__statement::after {
+  position: absolute;
+  inset: -12% -20%;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 18%,
+      rgba(255, 255, 255, 0.04) 34%,
+      rgba(222, 177, 129, 0.22) 48%,
+      rgba(255, 239, 217, 0.06) 60%,
+      transparent 78%
+    );
+  content: "";
+  opacity: 0;
+  mix-blend-mode: screen;
+  transform: translate3d(-18%, 0, 0) rotate(2deg);
+  pointer-events: none;
+}
+
+.motion-ready .finale-chapter--active .finale-chapter__statement::after {
+  opacity: 1;
+  animation: couture-satin 11s ease-in-out 0.8s infinite;
+}
+
+.finale-chapter__hero-image::before,
+.finale-card::before,
+.finale-chapter__boxes::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(130deg, rgba(255, 255, 255, 0.12), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 32%, rgba(0, 0, 0, 0.28));
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms ease;
+  z-index: 1;
+}
+
+.finale-chapter__hero-image:hover::before,
+.finale-card:hover::before,
+.finale-chapter__boxes:hover::before {
+  opacity: 1;
+}
+
+.finale-chapter__hero-image img,
+.finale-card img,
+.finale-chapter__boxes img,
+.finale-chapter__redwall img {
+  transition:
+    transform 1300ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    filter 900ms ease;
+  will-change: transform, filter;
+}
+
+.finale-chapter__hero-image:hover img,
+.finale-card:hover img,
+.finale-chapter__boxes:hover img,
+.finale-chapter__statement:hover .finale-chapter__redwall img {
+  transform: scale(1.04);
+  filter: saturate(1.06) contrast(1.03);
+}
+
+@keyframes couture-shimmer {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateX(-140%) skewX(-18deg);
+  }
+
+  20% {
+    opacity: 0.72;
+  }
+
+  34% {
+    opacity: 0.1;
+    transform: translateX(142%) skewX(-18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(142%) skewX(-18deg);
+  }
+}
+
+@keyframes couture-satin {
+  0%,
+  18% {
+    transform: translate3d(-18%, 0, 0) rotate(2deg);
+  }
+
+  46% {
+    transform: translate3d(8%, -2%, 0) rotate(1deg);
+  }
+
+  74% {
+    transform: translate3d(-4%, 1%, 0) rotate(3deg);
+  }
+
+  100% {
+    transform: translate3d(-18%, 0, 0) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .finale-chapter__hero-image,
+  .motion-ready .finale-card,
+  .motion-ready .finale-chapter__boxes,
+  .motion-ready .finale-chapter__statement,
+  .motion-ready .finale-chapter__outro,
+  .motion-ready .finale-chapter__hero-copy > *,
+  .motion-ready .finale-chapter__ghost {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  .motion-ready .finale-chapter__title-script::after,
+  .motion-ready .finale-chapter__statement::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 .feature-band {
   position: relative;
   margin: 2.8rem 0 2.1rem;
@@ -2267,41 +2553,95 @@ img {
   }
 
   .finale-chapter__hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "copy copy"
+      "left right";
+    gap: 0.8rem;
+  }
+
+  .finale-chapter__hero-image {
+    min-height: 15rem;
+  }
+
+  .finale-chapter__hero-image--left {
+    grid-area: left;
+  }
+
+  .finale-chapter__hero-image--right {
+    grid-area: right;
   }
 
   .finale-chapter__hero-copy {
+    grid-area: copy;
     gap: 0.8rem;
-    padding: 1.7rem 1.1rem 1.5rem;
+    padding: 1.55rem 1rem 1.4rem;
+    overflow: hidden;
   }
 
   .finale-chapter__ghost {
-    inset-inline: 12%;
+    display: none;
+  }
+
+  .finale-chapter__title {
+    width: min(100%, 15rem);
+    margin-inline: auto;
   }
 
   .finale-chapter__title-main {
-    font-size: clamp(2.6rem, 13vw, 4.4rem);
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    line-height: 0.88;
   }
 
   .finale-chapter__title-script {
-    font-size: clamp(3.2rem, 12vw, 5rem);
+    margin-top: -0.1rem;
+    font-size: clamp(2.65rem, 10vw, 4rem);
+    line-height: 0.86;
+  }
+
+  .finale-chapter__caps {
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
+  }
+
+  .finale-chapter__dek {
+    width: min(100%, 15.5rem);
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .finale-chapter__quote {
+    width: min(100%, 12rem);
     font-size: clamp(1.45rem, 7vw, 2.2rem);
   }
 
   .finale-chapter__strip {
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 82vw;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding: 0.1rem 0 0.75rem;
+    scroll-padding-left: 0.15rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .finale-chapter__strip::-webkit-scrollbar {
+    display: none;
   }
 
   .finale-card,
   .finale-card--pearls,
   .finale-card--boxing,
   .finale-card--swing {
-    min-height: 18rem;
+    min-height: 17rem;
+    scroll-snap-align: center;
     transform: none;
+  }
+
+  .finale-card--swing {
+    grid-column: auto;
   }
 
   .finale-chapter__feature {
@@ -2313,12 +2653,12 @@ img {
   }
 
   .finale-chapter__statement {
-    min-height: 41rem;
+    min-height: 36rem;
   }
 
   .finale-chapter__statement-copy {
     width: 100%;
-    padding: 1.6rem 1rem 17.5rem;
+    padding: 1.45rem 1rem 14.75rem;
     text-align: center;
   }
 
@@ -2333,7 +2673,13 @@ img {
   .finale-chapter__redwall {
     inset: auto 0 0;
     width: 100%;
-    height: 17rem;
+    height: 17.5rem;
+    background: linear-gradient(180deg, rgba(54, 9, 13, 0.82), rgba(101, 22, 28, 0.94));
+  }
+
+  .finale-chapter__redwall img {
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .finale-chapter__legacy {

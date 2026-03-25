@@ -5,6 +5,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 INDEX_HTML = (ROOT / "index.html").read_text(encoding="utf-8")
 STYLES_CSS = (ROOT / "styles.css").read_text(encoding="utf-8")
+APP_JS = (ROOT / "app.js").read_text(encoding="utf-8") if (ROOT / "app.js").exists() else ""
 
 
 class HomepageContractTests(unittest.TestCase):
@@ -74,6 +75,37 @@ class HomepageContractTests(unittest.TestCase):
             ".featured-spread__strip",
         ):
             self.assertIn(selector, STYLES_CSS)
+
+    def test_finale_section_has_couture_motion_hooks(self):
+        self.assertIn("./app.js", INDEX_HTML)
+
+        for selector in (
+            ".motion-ready .finale-chapter__hero-image",
+            ".finale-chapter--active .finale-chapter__hero-image",
+            ".finale-chapter__title-script::after",
+            "@keyframes couture-shimmer",
+        ):
+            self.assertIn(selector, STYLES_CSS)
+
+        for fragment in (
+            "IntersectionObserver",
+            "finale-chapter--active",
+            "--finale-shift",
+            "--finale-tilt",
+        ):
+            self.assertIn(fragment, APP_JS)
+
+    def test_finale_section_has_mobile_editorial_rules(self):
+        for fragment in (
+            "scroll-snap-type: x mandatory",
+            "grid-template-areas:",
+            "\"copy copy\"",
+            "grid-auto-columns: 82vw",
+            "scroll-snap-align: center",
+            ".finale-chapter__ghost {\n    display: none;",
+            ".finale-chapter__redwall img {\n    object-fit: contain;",
+        ):
+            self.assertIn(fragment, STYLES_CSS)
 
 
 if __name__ == "__main__":
