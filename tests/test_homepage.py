@@ -40,6 +40,31 @@ class HomepageContractTests(unittest.TestCase):
         for fragment in ("Dior 2026", "Breakfast Stories", "About Monica", "Book A Session"):
             self.assertIn(fragment, INDEX_HTML)
 
+    def test_finale_section_uses_separate_source_images(self):
+        for asset in (
+            "./finale-scream.jpg",
+            "./finale-bite.jpg",
+            "./finale-pearls.jpg",
+            "./finale-boxing.jpg",
+            "./finale-swing.jpg",
+            "./finale-boxes.jpg",
+            "./finale-redwall.jpg",
+        ):
+            self.assertIn(asset, INDEX_HTML)
+
+        for fragment in (
+            "The Final Chapter",
+            "Little Icon",
+            "Collection",
+            "Grace",
+            "with",
+            "Grit",
+            "View The Full Portfolio",
+        ):
+            self.assertIn(fragment, INDEX_HTML)
+
+        self.assertNotIn('src="./finale-reference.png"', INDEX_HTML)
+
     def test_styles_define_featured_portfolio_layout(self):
         for selector in (
             ".featured-spread",
