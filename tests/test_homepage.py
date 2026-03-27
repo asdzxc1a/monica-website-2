@@ -104,6 +104,23 @@ class HomepageContractTests(unittest.TestCase):
         ):
             self.assertIn(selector, STYLES_CSS)
 
+    def test_desktop_featured_aside_reads_as_editorial_story(self):
+        for fragment in (
+            "Look Study 01",
+            "Soft Rebellion",
+            "Lavender texture, dark lens, colder posture.",
+            "Blue Room Couture",
+        ):
+            self.assertIn(fragment, INDEX_HTML)
+
+        for selector in (
+            ".featured-spread__aside-editorial",
+            ".featured-spread__aside-heading",
+            ".featured-spread__aside-note",
+            ".featured-spread__aside-inset",
+        ):
+            self.assertIn(selector, STYLES_CSS)
+
     def test_finale_section_has_couture_motion_hooks(self):
         self.assertIn("./app.js", INDEX_HTML)
 
