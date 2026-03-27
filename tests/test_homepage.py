@@ -10,8 +10,10 @@ APP_JS = (ROOT / "app.js").read_text(encoding="utf-8") if (ROOT / "app.js").exis
 
 class HomepageContractTests(unittest.TestCase):
     def test_primary_navigation_matches_brand_direction(self):
-        for label in ("PORTFOLIO", "ABOUT", "PRESS", "CONTACT"):
+        for label in ("PORTFOLIO", "PRESS", "CONTACT"):
             self.assertIn(label, INDEX_HTML)
+
+        self.assertNotIn(">ABOUT<", INDEX_HTML)
 
     def test_featured_work_section_uses_all_compress_assets(self):
         for asset in (
@@ -37,9 +39,33 @@ class HomepageContractTests(unittest.TestCase):
         ):
             self.assertIn(fragment, INDEX_HTML)
 
-    def test_homepage_retains_supporting_editorial_sections(self):
-        for fragment in ("Dior 2026", "Breakfast Stories", "About Monica", "Book A Session"):
+    def test_featured_work_mobile_reduces_copy_density(self):
+        for fragment in (
+            "A darker editorial study of Monica in motion, poise, and transformation.",
+            "Denim",
+            "Tulle",
+            "Tailoring",
+            "Couture",
+        ):
             self.assertIn(fragment, INDEX_HTML)
+
+        for selector in (
+            ".featured-spread__tags",
+            ".featured-spread__tag",
+        ):
+            self.assertIn(selector, STYLES_CSS)
+
+        for fragment in ("Read Editor's Letter", "View Wardrobe Notes"):
+            self.assertNotIn(fragment, INDEX_HTML)
+
+        for selector in (".featured-spread__details", ".featured-spread__detail"):
+            self.assertNotIn(selector, STYLES_CSS)
+
+    def test_homepage_retains_supporting_editorial_sections(self):
+        for fragment in ("Dior 2026", "Breakfast Stories", "Book A Session"):
+            self.assertIn(fragment, INDEX_HTML)
+
+        self.assertNotIn("About Monica", INDEX_HTML)
 
     def test_finale_section_uses_separate_source_images(self):
         for asset in (
