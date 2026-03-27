@@ -1237,9 +1237,13 @@ img {
   right: 0;
   bottom: 0;
   z-index: 1;
-  padding: 1.2rem 1.25rem 1.25rem;
-  background: linear-gradient(180deg, rgba(246, 243, 237, 0) 0%, rgba(246, 243, 237, 0.18) 18%, rgba(243, 239, 233, 0.92) 68%, rgba(238, 233, 226, 0.97) 100%);
-  backdrop-filter: blur(6px);
+  min-height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.9rem 1.1rem 0.95rem;
+  background: linear-gradient(180deg, rgba(246, 243, 237, 0) 0%, rgba(246, 243, 237, 0.1) 26%, rgba(243, 239, 233, 0.88) 72%, rgba(238, 233, 226, 0.96) 100%);
+  backdrop-filter: blur(3px);
 }
 
 .story-card__body--centered {
@@ -1247,29 +1251,29 @@ img {
 }
 
 .story-card__eyebrow {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
   color: #82b7bc;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
 .story-card__title {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.3rem;
   font-family: var(--serif);
-  font-size: clamp(2rem, 3vw, 3.15rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
   font-weight: 500;
-  line-height: 0.9;
+  line-height: 0.88;
   letter-spacing: 0.04em;
   color: #151512;
   text-transform: uppercase;
 }
 
 .story-card__meta {
-  margin: 0.12rem 0;
+  margin: 0.08rem 0;
   color: rgba(30, 30, 26, 0.72);
-  font-size: 0.83rem;
-  line-height: 1.48;
+  font-size: 0.75rem;
+  line-height: 1.36;
 }
 
 .story-card--portrait .story-card__media {
@@ -1299,7 +1303,7 @@ img {
 }
 
 .story-card--feature .story-card__title {
-  font-size: clamp(3rem, 5.2vw, 5.4rem);
+  font-size: clamp(2.6rem, 4.5vw, 4.4rem);
 }
 
 .story-card--detail .story-card__media {
@@ -1645,6 +1649,38 @@ img {
   font-size: 1rem;
   font-style: italic;
   line-height: 1.5;
+}
+
+.finale-chapter__contact-stack {
+  display: grid;
+  gap: 0.3rem;
+  width: min(100%, 18rem);
+  margin-bottom: 1.35rem;
+}
+
+.finale-chapter__contact-label,
+.finale-chapter__contact-meta,
+.finale-chapter__contact-link {
+  margin: 0;
+}
+
+.finale-chapter__contact-label {
+  color: rgba(225, 201, 168, 0.88);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.finale-chapter__contact-link,
+.finale-chapter__contact-meta {
+  color: rgba(247, 235, 221, 0.88);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.finale-chapter__contact-link {
+  font-weight: 600;
 }
 
 .finale-chapter__button {
@@ -2645,41 +2681,114 @@ img {
   }
 
   .finale-chapter__feature {
-    gap: 0.85rem;
+    display: block;
+    margin-top: 1rem;
   }
 
   .finale-chapter__boxes {
-    min-height: 20rem;
+    display: none;
   }
 
   .finale-chapter__statement {
-    min-height: 36rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    min-height: min(38rem, calc(100svh - 1.25rem));
+    border: 1px solid rgba(216, 186, 140, 0.32);
+    background: #100b0b;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.32);
   }
 
   .finale-chapter__statement-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    padding: 1.45rem 1rem 14.75rem;
-    text-align: center;
+    margin: 0;
+    padding: 1rem 0.8rem 0.95rem;
+    text-align: left;
+    background:
+      linear-gradient(180deg, rgba(249, 242, 234, 0.97), rgba(241, 228, 212, 0.93)),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+    border-right: 1px solid rgba(187, 150, 98, 0.3);
+  }
+
+  .finale-chapter__statement-title {
+    margin-top: 0.75rem;
+    color: #241711;
+  }
+
+  .finale-chapter__statement-title span {
+    font-size: clamp(1.75rem, 8.2vw, 2.55rem);
+  }
+
+  .finale-chapter__statement-title em {
+    margin: 0.08rem 0 0.12rem;
+    font-size: clamp(1.95rem, 7.4vw, 2.7rem);
+  }
+
+  .finale-chapter__statement-eyebrow,
+  .finale-chapter__statement-body,
+  .finale-chapter__contact-label,
+  .finale-chapter__contact-link,
+  .finale-chapter__contact-meta {
+    color: #2d1f18;
+  }
+
+  .finale-chapter__statement-body,
+  .finale-chapter__contact-stack {
+    width: 100%;
   }
 
   .finale-chapter__statement-body {
-    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.78rem;
+    line-height: 1.38;
+  }
+
+  .finale-chapter__contact-stack {
+    gap: 0.22rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .finale-chapter__contact-label {
+    color: rgba(62, 38, 24, 0.72);
+  }
+
+  .finale-chapter__contact-link,
+  .finale-chapter__contact-meta {
+    font-size: 0.72rem;
+    line-height: 1.35;
   }
 
   .finale-chapter__button {
     width: 100%;
+    padding: 0.78rem 0.72rem;
+    background:
+      linear-gradient(180deg, rgba(22, 16, 13, 0.96), rgba(10, 8, 8, 0.98)),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+    color: #f6eee4;
+    font-size: 0.68rem;
+    letter-spacing: 0.13em;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   }
 
   .finale-chapter__redwall {
-    inset: auto 0 0;
+    display: block;
+    position: relative;
+    inset: auto;
     width: 100%;
-    height: 17.5rem;
-    background: linear-gradient(180deg, rgba(54, 9, 13, 0.82), rgba(101, 22, 28, 0.94));
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(180deg, rgba(54, 9, 13, 0.35), rgba(101, 22, 28, 0.15));
+    overflow: hidden;
   }
 
   .finale-chapter__redwall img {
-    object-fit: contain;
-    object-position: center bottom;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
   }
 
   .finale-chapter__legacy {

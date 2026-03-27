@@ -57,10 +57,12 @@ class HomepageContractTests(unittest.TestCase):
             "The Final Chapter",
             "Little Icon",
             "Collection",
-            "Grace",
-            "with",
-            "Grit",
-            "View The Full Portfolio",
+            "Contact &amp; Bookings",
+            "Get In",
+            "Touch",
+            "With Me",
+            "Get In Touch With Me",
+            "hello@monicastudio.art",
         ):
             self.assertIn(fragment, INDEX_HTML)
 
@@ -103,7 +105,10 @@ class HomepageContractTests(unittest.TestCase):
             "grid-auto-columns: 82vw",
             "scroll-snap-align: center",
             ".finale-chapter__ghost {\n    display: none;",
-            ".finale-chapter__redwall img {\n    object-fit: contain;",
+            "grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);",
+            "min-height: min(38rem, calc(100svh - 1.25rem));",
+            ".finale-chapter__redwall {\n    display: block;",
+            ".finale-chapter__redwall img {\n    width: 100%;",
         ):
             self.assertIn(fragment, STYLES_CSS)
 
