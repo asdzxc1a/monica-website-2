@@ -1,0 +1,62 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - codex/analyze-current-project
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build publish directory
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import shutil
+
+          root = Path(".")
+          out = root / "site-dist"
+          out.mkdir(exist_ok=True)
+
+          html = (root / "index.html").read_text(encoding="utf-8")
+          refs = sorted(set(re.findall(r'(?:src|href)="\./([^"]+)"', html)))
+
+          shutil.copy2(root / "index.html", out / "index.html")
+
+          for ref in refs:
+              clean_ref = ref.split("?", 1)[0]
+              source = root / clean_ref
+              destination = out / clean_ref
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(source, destination)
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site-dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

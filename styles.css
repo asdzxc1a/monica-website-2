@@ -347,6 +347,7 @@ img {
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(250px, 0.6fr) minmax(380px, 1.02fr) minmax(360px, 1.08fr);
+  grid-template-areas: "lead hero aside";
   gap: 1.5rem;
   align-items: stretch;
 }
@@ -558,19 +559,19 @@ img {
 
 .featured-spread__aside {
   grid-area: aside;
-  position: relative;
+  display: grid;
+  grid-template-columns: minmax(150px, 0.42fr) minmax(270px, 0.58fr);
+  align-items: start;
+  gap: 1.25rem;
   min-height: clamp(39rem, 54vw, 50rem);
-  padding-left: clamp(1.2rem, 5vw, 5rem);
+  padding-left: 0;
 }
 
 .featured-spread__aside-editorial {
-  position: absolute;
-  top: 1.8rem;
-  left: 0;
-  z-index: 3;
   display: grid;
   gap: 0.7rem;
-  width: min(42%, 15rem);
+  align-content: start;
+  padding-top: clamp(1.8rem, 5vw, 3.6rem);
 }
 
 .featured-spread__aside-kicker,
@@ -604,6 +605,11 @@ img {
   line-height: 1.55;
 }
 
+.featured-spread__aside-stage {
+  position: relative;
+  min-height: clamp(39rem, 54vw, 50rem);
+}
+
 .featured-spread__aside-card {
   position: absolute;
   padding: 0.7rem;
@@ -614,21 +620,20 @@ img {
 }
 
 .featured-spread__aside-card--rebellion {
-  top: 0;
-  right: 0;
-  width: min(77%, 27rem);
-  height: 80%;
+  inset: 0 0 auto auto;
+  width: min(100%, 25rem);
+  height: 78%;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
 }
 
 .featured-spread__aside-card--couture {
-  width: min(49%, 16rem);
-  height: 42%;
+  width: min(62%, 14rem);
+  height: 40%;
 }
 
 .featured-spread__aside-inset {
-  left: 0;
-  bottom: 1.2rem;
+  left: -1.2rem;
+  bottom: 1rem;
   z-index: 2;
   box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
 }
@@ -2391,8 +2396,20 @@ img {
 
   .featured-spread__aside {
     grid-area: aside;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .featured-spread__aside-editorial {
+    display: none;
+  }
+
+  .featured-spread__aside-stage {
+    min-height: 31rem;
+  }
+
+  .featured-spread__aside-card--couture {
+    width: min(52%, 13rem);
   }
 
   .featured-spread__strip {
@@ -2654,6 +2671,11 @@ img {
 
   .featured-spread__aside-editorial {
     display: none;
+  }
+
+  .featured-spread__aside-stage {
+    position: static;
+    min-height: 0;
   }
 
   .featured-spread__aside-card {

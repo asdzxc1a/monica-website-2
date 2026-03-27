@@ -93,6 +93,7 @@ class HomepageContractTests(unittest.TestCase):
             self.assertIn(fragment, INDEX_HTML)
 
         self.assertNotIn('src="./finale-reference.png"', INDEX_HTML)
+        self.assertNotIn('src="./finale-crown.jpg"', INDEX_HTML)
 
     def test_styles_define_featured_portfolio_layout(self):
         for selector in (
@@ -117,7 +118,9 @@ class HomepageContractTests(unittest.TestCase):
             ".featured-spread__aside-editorial",
             ".featured-spread__aside-heading",
             ".featured-spread__aside-note",
+            ".featured-spread__aside-stage",
             ".featured-spread__aside-inset",
+            "\"lead hero aside\"",
         ):
             self.assertIn(selector, STYLES_CSS)
 
