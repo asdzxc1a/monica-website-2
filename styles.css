@@ -1817,10 +1817,58 @@ img {
   content: " \2192";
 }
 
+.finale-chapter__actions {
+  display: grid;
+  gap: 0.72rem;
+  width: min(100%, 18rem);
+}
+
 .finale-chapter__button:hover,
 .finale-chapter__button:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.38);
+}
+
+.finale-chapter__social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.88rem 1.1rem;
+  border: 1px solid rgba(225, 201, 168, 0.32);
+  background:
+    linear-gradient(180deg, rgba(33, 24, 19, 0.92), rgba(13, 10, 9, 0.98)),
+    radial-gradient(circle at 18% 16%, rgba(207, 112, 71, 0.18), transparent 48%);
+  color: rgba(247, 235, 221, 0.96);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.finale-chapter__social-button:hover,
+.finale-chapter__social-button:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(232, 204, 142, 0.66);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+}
+
+.finale-chapter__social-icon,
+.site-footer__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finale-chapter__social-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
 }
 
 .finale-chapter__redwall {
@@ -2307,6 +2355,19 @@ img {
   background: rgba(255, 255, 255, 0.06);
   border-color: var(--line);
   transform: translateY(-1px);
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 0.9rem;
+}
+
+.site-footer__social-icon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
 }
 
 .site-footer__copyright {
@@ -3183,6 +3244,11 @@ img {
     margin-bottom: 0.85rem;
   }
 
+  .finale-chapter__actions {
+    width: 100%;
+    gap: 0.55rem;
+  }
+
   .finale-chapter__contact-label {
     color: rgba(62, 38, 24, 0.72);
   }
@@ -3203,6 +3269,22 @@ img {
     font-size: 0.68rem;
     letter-spacing: 0.13em;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  }
+
+  .finale-chapter__social-button {
+    width: 100%;
+    padding: 0.78rem 0.72rem;
+    border-color: rgba(50, 31, 21, 0.14);
+    background:
+      linear-gradient(180deg, rgba(241, 232, 223, 0.92), rgba(232, 218, 207, 0.98)),
+      radial-gradient(circle at 18% 16%, rgba(186, 111, 83, 0.22), transparent 48%);
+    color: #2d1f18;
+  }
+
+  .finale-chapter__social-button:hover,
+  .finale-chapter__social-button:focus-visible {
+    border-color: rgba(83, 52, 36, 0.3);
+    box-shadow: 0 12px 22px rgba(64, 37, 24, 0.12);
   }
 
   .finale-chapter__redwall {

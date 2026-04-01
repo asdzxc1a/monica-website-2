@@ -89,6 +89,10 @@ class HomepageContractTests(unittest.TestCase):
             "With Me",
             "Get In Touch With Me",
             "hello@monicastudio.art",
+            "https://www.instagram.com/monicastyle.mc/",
+            "Follow Monica on Instagram",
+            "Instagram",
+            "Monaco",
         ):
             self.assertIn(fragment, INDEX_HTML)
 
