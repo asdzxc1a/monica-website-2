@@ -89,6 +89,7 @@ class HomepageContractTests(unittest.TestCase):
             "With Me",
             "Get In Touch With Me",
             "hello@monicastudio.art",
+            "+377 6 43 91 37 95",
             "https://www.instagram.com/monicastyle.mc/",
             "Follow Monica on Instagram",
             "Instagram",
