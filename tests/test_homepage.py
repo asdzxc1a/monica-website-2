@@ -15,6 +15,7 @@ class HomepageContractTests(unittest.TestCase):
 
         self.assertNotIn(">ABOUT<", INDEX_HTML)
         self.assertNotIn('<button class="menu-button" type="button" aria-label="Open menu">\n            <span></span>', INDEX_HTML)
+        self.assertNotIn('>MENU</button>', INDEX_HTML)
         self.assertNotIn(".menu-button span", STYLES_CSS)
 
     def test_featured_work_section_uses_all_compress_assets(self):
