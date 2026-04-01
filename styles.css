@@ -209,19 +209,10 @@ img {
 .menu-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
   border: 0;
   background: transparent;
   cursor: pointer;
   padding: 0;
-}
-
-.menu-button span {
-  display: block;
-  width: 0.9rem;
-  height: 1px;
-  margin-bottom: 0.14rem;
-  background: currentColor;
 }
 
 .hero {
